@@ -11,12 +11,10 @@ http://amzn.to/1LGWsLG
 #here = os.path.dirname(os.path.realpath(__file__))
 #sys.path.append(os.path.join(here, "./vendored"))
 
-from __future__ import print_function
 import os
-from botocore.vendored import requests
-from pprint import pformat
-import json
 import xml.etree.ElementTree as ET
+
+from botocore.vendored import requests
 
 API_URL = None
 USER = None
@@ -185,8 +183,9 @@ def lambda_handler(event, context):
     ID to prevent someone else from configuring a skill that sends requests to
     this function.
     """
-    SKILL_ID = os.environ.get("SKILL_ID", None)
-    if SKILL_ID:
+
+    skill_id = os.environ.get("SKILL_ID", None)
+    if skill_id:
         if event['session']['application']['applicationId'] != SKILL_ID:
             raise ValueError("Invalid Application ID")
 
