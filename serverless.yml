@@ -56,7 +56,6 @@ provider:
 
 functions:
   fstatus:
-    handler: handler.fstatus
+    handler: handler.lambda_handler
     events:
       - alexaSkill
-#      - cloudwatchLog: '/aws/lambda/fstatus'
